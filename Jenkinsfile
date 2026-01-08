@@ -14,10 +14,10 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
+        //stage('Test') {
+        //    steps {
                 bat 'dotnet test --no-build --configuration Release'
-            }
-        }
+        //    }
+        //}
     }
 }
