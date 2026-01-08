@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Restore') {
             steps {
-                bat 'dotnet restore'
+                bat 'nuget restore JenkinTest.sln'
             }
         }
 
         stage('Build') {
             steps {
-                bat 'dotnet build --configuration Release'
+                bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe" JenkinTest\\JenkinTest.vbproj /p:Configuration=Release'
             }
         }
 
@@ -20,5 +20,10 @@ pipeline {
             }
         }
     }
-}
 
+    post {
+        always {
+            echo 'Build finished'
+        }
+    }
+}
